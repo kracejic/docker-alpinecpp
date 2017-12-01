@@ -7,7 +7,9 @@ FROM alpine
 # ADD . /app
 
 # Install any needed packages specified in requirements.txt
-RUN apk add --no-cache make gcc g++ cmake git
+RUN apk update
+RUN apk add make gcc g++ cmake git boost-dev clang vim bash cppcheck tmux
+RUN git clone https://github.com/kracejic/dotfiles-minimal.git ~/bin && cd ~/bin && ./install.sh
 
 # Make port 80 available to the world outside this container
 # EXPOSE 80
@@ -16,5 +18,5 @@ RUN apk add --no-cache make gcc g++ cmake git
 # ENV NAME World
 
 # Run app.py when the container launches
-CMD ["sh"]
+CMD ["bash"]
 
