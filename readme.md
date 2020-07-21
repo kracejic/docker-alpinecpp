@@ -17,6 +17,10 @@ docker push kracejic/alplinecppheavy:latest
 docker build -t debiancpp ./debiancpp
 docker tag debiancpp kracejic/debiancpp:latest
 docker push kracejic/debiancpp:latest
+
+docker build -t fedoracpp ./fedoracpp
+docker tag fedoracpp kracejic/fedoracpp:latest
+docker push kracejic/fedoracpp:latest
 ```
 
 Build behind proxy:
@@ -27,4 +31,5 @@ docker build -t alplinecppheavy . --build-arg http_proxy="$http_proxy" --build-a
 Run image: `docker run -it alpinecppheavy`
 Run with proxy: `docker run -e "https_proxy=$https_proxy" -e "http_proxy=$http_proxy" -it alpinecppheavy`
 
+Run and mount current folder: `docker run --mount type=bind,source="$(pwd)",target=/mnt -it latexbuilder`
 
